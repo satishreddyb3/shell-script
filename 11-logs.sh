@@ -2,21 +2,25 @@ ID=$(id -u)
 echo "script name :$0"
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
+
 VALIDATE(){
     if [ $? -ne 0 ]
     then
-        echo "ERROR:: $2 failed"
+        echo "ERROR:: $2 $R failed $N"
         exit 1
     else
-        echo "$2 SUCCESS"
+        echo "$2 $G SUCCESS $N"
     fi
 }
 if [ $ID -ne 0 ]
 then
-    echo "ERROR:: Please run this script with root access"
+    echo "$R ERROR:: Please run this script with root access $N"
     exit 1 # you can give other than 0
 else
-    echo "You are root user"
+    echo "$G You are root user $N"
 fi
 yum install mysql -y &>> %LOGFILE
 VALIDATE $? "installing sql"
