@@ -1,3 +1,4 @@
+#!/bin/bash
 ID=$(id -u)
 VALIDATE(){
     if [ $? -ne 0 ]
