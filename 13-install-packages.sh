@@ -10,3 +10,11 @@ else
     echo "you are root user"
 f1
 echo "All arguments passed:$@"
+for package in $@
+do
+    yum list installed $package
+    if [ $? -ne 0 ]
+    then
+        yum install $package -y 
+        VALIDATE $? "Installion of $package"
+done
