@@ -9,18 +9,18 @@ N="\e[0m"
 VALIDATE(){
     if [ $? -ne 0 ]
     then
-        echo "ERROR:: $2 $R failed $N"
+        echo -e "ERROR:: $2 ... $R failed $N"
         exit 1
     else
-        echo "$2 $G SUCCESS $N"
+        echo  -e "$2 ... $G SUCCESS $N"
     fi
 }
 if [ $ID -ne 0 ]
 then
-    echo "$R ERROR:: Please run this script with root access $N"
+    echo -e "$R ERROR:: Please run this script with root access $N"
     exit 1 # you can give other than 0
 else
-    echo "$G You are root user $N"
+    echo -e "$G You are root user $N"
 fi
 yum install mysql -y &>> %LOGFILE
 VALIDATE $? "installing sql"
