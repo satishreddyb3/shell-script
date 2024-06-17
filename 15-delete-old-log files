@@ -1,0 +1,5 @@
+#!bin/bash
+SOURCE_DIR=/tmp/shellscript-logs
+if [ ! -d $SOURCE_DIR ]
+then
+    echo -e "$R soure directory not exit : $SOURCE_DIR does not exit. $N
